@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "python kick_notifier.py",
+    "restartPolicy": "ON_FAILURE"
+  }
+}
