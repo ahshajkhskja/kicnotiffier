@@ -43,18 +43,16 @@ def main():
     print(f"Kick Notifier running! Monitoring {len(channels)} channels.")
     notified = set()
 
-    while True:
-        for channel in channels:
-            status = is_live(channel)
-            if status and channel not in notified:
-                print(f"LIVE: {channel}")
-                send_discord_notification(channel, status["title"], status["viewers"], status["category"])
-                notified.add(channel)
-            elif not status and channel in notified:
-                print(f"{channel} offline")
-                notified.remove(channel)
-        
-        time.sleep(40)
+    # Immediate check
+    print("Checking MapleSyrupy right now...")
+    status = is_live("maplesyrupy")
+    if status:
+        print("LIVE detected!")
+        send_discord_notification("maplesyrupy", status["title"], status["viewers"], status["category"])
+    else:
+        print("Not detected as live.")
+
+    print("Done.")
 
 if __name__ == "__main__":
     main()
