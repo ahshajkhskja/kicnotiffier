@@ -9,7 +9,7 @@ def send_discord_notification(channel, title, viewers, category):
     if not DISCORD_WEBHOOK:
         return
     embed = {
-        "title": f"🔴 {channel} is LIVE!",
+        "title": f" {channel} is LIVE!",
         "description": title,
         "color": 0x00ff00,
         "fields": [
@@ -38,7 +38,7 @@ def is_live(channel_slug):
         return None
 
 def main():
-    channels = ["xqc"]  # Add your streamers here
+    channels = ["maplesyrupy"]
     
     print(f"Kick Notifier running! Monitoring {len(channels)} channels.")
     notified = set()
